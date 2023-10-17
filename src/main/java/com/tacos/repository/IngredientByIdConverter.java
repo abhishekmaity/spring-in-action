@@ -4,10 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
-
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.type.TypeFactory;
-import com.fasterxml.jackson.databind.util.Converter;
+import org.springframework.core.convert.converter.Converter;
 import com.tacos.model.Ingredient;
 import com.tacos.model.Ingredient.Type;
 
@@ -33,15 +30,4 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
 		return ingredientMap.get(id);
 	}
 
-	@Override
-	public JavaType getInputType(TypeFactory typeFactory) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public JavaType getOutputType(TypeFactory typeFactory) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
