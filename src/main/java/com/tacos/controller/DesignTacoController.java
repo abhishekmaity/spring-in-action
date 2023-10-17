@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.tacos.model.Ingredient;
 import com.tacos.model.Ingredient.Type;
@@ -59,9 +60,9 @@ public class DesignTacoController {
 	}
 
 	@PostMapping
-	public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder) {
-		tacoOrder.addTaco(taco);
-		log.info("Processing taco: {}", taco);
-		return "redirect:/orders/current";
+	public String processOrder(TacoOrder order, SessionStatus sessionStatus) {
+		log.info("Order submitted: {}", order);
+		sessionStatus.setComplete();
+		return "redirect:/";
 	}
 }
