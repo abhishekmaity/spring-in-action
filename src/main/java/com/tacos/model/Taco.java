@@ -1,5 +1,6 @@
 package com.tacos.model;
 
+import java.util.Date;
 import java.util.List;
 
 import jakarta.validation.constraints.NotNull;
@@ -14,6 +15,10 @@ public class Taco {
 	@Size(min=1, message="You must choose at least 1 ingredient")
 	private List<Ingredient> ingredients;
 	
+	private Long id;
+	
+	private Date createdAt = new Date();
+	
 	public String getName() {
 		return name;
 	}
@@ -25,5 +30,17 @@ public class Taco {
 	}
 	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 }

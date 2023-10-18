@@ -1,6 +1,8 @@
 package com.tacos.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
@@ -9,7 +11,14 @@ import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public class TacoOrder {
+public class TacoOrder implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Long id;
+	private Date placedAt;
 	@NotBlank(message = "Delivery name is required")
 	private String deliveryName;
 	@NotBlank(message = "Street is required")
@@ -102,5 +111,21 @@ public class TacoOrder {
 
 	public void setTacos(List<Taco> tacos) {
 		this.tacos = tacos;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getPlacedAt() {
+		return placedAt;
+	}
+
+	public void setPlacedAt(Date placedAt) {
+		this.placedAt = placedAt;
 	}
 }
