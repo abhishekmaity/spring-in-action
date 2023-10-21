@@ -13,7 +13,7 @@ public class Taco {
 	
 	@NotNull
 	@Size(min=1, message="You must choose at least 1 ingredient")
-	private List<Ingredient> ingredients;
+	private List<IngredientRef> ingredients;
 	
 	private Long id;
 	
@@ -25,10 +25,12 @@ public class Taco {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Ingredient> getIngredients() {
+	@NotNull 
+	@Size(min = 1, message = "You must choose at least 1 ingredient")
+	public List<IngredientRef> getIngredients() {
 		return ingredients;
 	}
-	public void setIngredients(List<Ingredient> ingredients) {
+	public void setIngredients(List<IngredientRef> ingredients) {
 		this.ingredients = ingredients;
 	}
 	public Long getId() {

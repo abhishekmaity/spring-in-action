@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.tacos.model.TacoOrder;
+import com.tacos.repository.OrderRepository;
 
 import jakarta.validation.Valid;
 
@@ -19,6 +20,11 @@ public class OrderController {
 
 	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(OrderController.class);
 
+	private OrderRepository orderRepo;
+	
+	public OrderController(OrderRepository orderRepo) {
+		this.orderRepo = orderRepo;
+		}
 	@GetMapping("/current")
 	public String orderForm() {
 		return "orderForm";
@@ -29,7 +35,7 @@ public class OrderController {
 		if (errors.hasErrors()) {
 			return "orderForm";
 		}
-		log.info("Order submitted: {}", order);
+		orderRepo.save(order);
 		sessionStatus.setComplete();
 		return "redirect:/";
 	}
