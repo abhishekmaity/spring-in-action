@@ -1,6 +1,12 @@
 package com.tacos.model;
 
-public class Ingredient {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.domain.Persistable;
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table
+public class Ingredient implements Persistable<String> {
+	@Id
 	private final String id;
 	private final String name;
 	private final Type type;
@@ -31,6 +37,12 @@ public class Ingredient {
 	@Override
 	public String toString() {
 		return "Ingredient [id=" + id + ", name=" + name + ", type=" + type + "]";
+	}
+
+	@Override
+	public boolean isNew() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	
