@@ -2,9 +2,9 @@ package com.tacos.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Persistable;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.Entity;
 
-@Table
+@Entity
 public class Ingredient implements Persistable<String> {
 	@Id
 	private final String id;
